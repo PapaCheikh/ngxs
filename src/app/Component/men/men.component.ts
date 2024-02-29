@@ -21,15 +21,8 @@ export class MenComponent {
     ) { }
 
   ngOnInit(): void {
-    this.getProducts();
-  }
-
-  getProducts(): void {
-   /*  this.productService.getProducts()
-    .subscribe(products =>this.products = products); */
     this.products$.subscribe({
       next: (prods) => {
-        this.store.dispatch(new GetAllProducts);
         this.products = prods;
       }
     })

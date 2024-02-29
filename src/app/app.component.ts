@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { GetAllProducts } from './Core/store/states/ProductState';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,12 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'demo-store-ngxs';
+
+  constructor(private store: Store) {
+  }
+  ngOnInit(): void {
+    this.store.dispatch(new GetAllProducts);
+  }
 }

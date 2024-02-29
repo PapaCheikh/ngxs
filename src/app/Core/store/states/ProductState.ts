@@ -25,6 +25,8 @@ export class ProductState {
 
     @Action(GetAllProducts)
     getAllProduct(ctx: StateContext<ProductStateModel>) {
+        console.log('getal');
+        
         return this._productService.getProducts().pipe(
             tap((prods) =>{
                 const state = ctx.getState();
